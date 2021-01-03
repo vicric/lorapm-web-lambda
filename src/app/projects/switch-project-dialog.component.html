@@ -1,0 +1,8 @@
+<h1 mat-dialog-title i18n>Switch project to {{data.projectName}}</h1>
+<div mat-dialog-content>
+  <p i18n>Are you sure you want to switch project?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" type="button" class="btn" (click)="onNoClick()" i18n>No Thanks</button>
+  <button mat-raised-button color="primary" type="button" class="btn" (click)="switchProject()" cdkFocusInitial i18n>Yes</button>
+</div>

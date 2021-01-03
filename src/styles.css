@@ -1,0 +1,28 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+/* You can add global styles to this file, and also import other style files */
+.lorapm-category-box {
+  float: left;
+  height: 20px;
+  width: 20px;
+  border: 1px solid black;
+  clear: both;
+  color: #998832;
+}
+
+.lorapm-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  padding: 15px
+}
+
+.lorapm-full-width {
+  width: 100%;
+}
+
+.lorapm-with-padding {
+  padding: 8px
+}
+

@@ -1,0 +1,85 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 i18n>People</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#" i18n>Configuration</a></li>
+            <li class="breadcrumb-item active" i18n>People</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <h2>{{ title }}</h2>
+    <!-- Default box -->
+    <div class="card card-solid">
+      <div class="card-header">
+        <div class="card-tools">
+          <div class="btn-group">
+            <a routerLink="/person">
+              <button type="button" class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body pb-0">
+        <div class="row d-flex align-items-stretch">
+          <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch"
+                *ngFor="let contact of contacts;">
+            <div class="card bg-light">
+              <div class="card-header text-muted border-bottom-0">
+                {{ contact.role }}
+              </div>
+              <div class="card-body pt-0">
+                <div class="row">
+                  <div class="col-7">
+                    <h2 class="lead"><b>{{contact.name}} {{contact.lastName}}</b></h2>
+                    <p class="text-muted text-sm"><b>{{contact.company}}</b></p>
+                    <p class="text-muted text-sm">{{contact.website}}</p>
+                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                      <li class="small" i18n><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: {{contact.address}}</li>
+                      <li class="small" i18n><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: {{contact.telephone1}}</li>
+                      <li class="small" i18n><span class="fa-li"><i class="fas fa-lg fa-at"></i></span> Email: {{contact.email}}</li>
+                      <li class="small" i18n><span class="fa-li"><i class="fas fa-lg fa-money-bill-wave"></i></span> Cost per hour: {{contact.costPerHour}}</li>
+                    </ul>
+                  </div>
+                  <div class="col-5 text-center">
+                    <img src="assets/user1-128x128.jpg" alt="" class="img-circle img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="text-right">
+                  <a [routerLink]="['/person', contact.id]">
+                    <button mat-icon-button type="button" class="btn">
+                      <mat-icon>launch</mat-icon>
+                    </button>
+                  </a>
+                  <button mat-icon-button type="button" class="btn" (click)="deleteContact($event, contact)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+  </section>
+  <!-- /.content -->
+</div>

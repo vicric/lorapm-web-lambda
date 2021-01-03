@@ -1,0 +1,26 @@
+<h1 mat-dialog-title i18n>Change project phase</h1>
+<div mat-dialog-actions>
+  <section>
+    <button mat-flat-button color="primary" type="button" class="btn" (click)="goToPhase('InitiatingAuthorized')" i18n>Authorize de project</button>
+  </section>
+  <section >
+    <button mat-raised-button color="primary" type="button" class="btn" (click)="goToPhase('Planning')" i18n>Go to Planning</button>
+  </section>
+  <section >
+    <button mat-raised-button color="primary" type="button" class="btn" (click)="goToPhase('ExecutionMonitoringControlling')" i18n>Go to Execution, Monitoring & Controlling</button>
+  </section>
+  <section >
+    <button mat-raised-button color="primary" type="button" class="btn" (click)="goToPhase('Closed')" i18n>Close the project</button>
+  </section>
+  <section >
+    <button mat-raised-button color="primary" type="button" class="btn" (click)="goToPhase('Aborted')" i18n>Abort the project</button>
+  </section>
+  <section >
+    <button mat-raised-button color="primary" type="button" class="btn" (click)="goToPhase('Planning')" i18n>Reopen the project</button>
+  </section>
+  <section>
+    <a>
+      <button mat-raised-button color="basic" type="button" class="btn" (click)="onCancel()" i18n>Cancel</button>
+    </a>
+  </section>
+</div>

@@ -1,0 +1,59 @@
+<div class="lorapm-with-padding" *ngIf="currentProject">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{currentProject.projectName}}</mat-card-title>
+      <mat-card-subtitle i18n>Current project</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p i18n>Contingency Limit: {{currentProject.contingencyLimit}} €</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a [routerLink]="['projects/project-form', currentProject.id]">
+        <button mat-button type="button" class="btn" i18n>EDIT PROJECT</button>
+      </a>
+      <!-- <button mat-button routerLink="projects/project-form">EDIT PROJECT</button> -->
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div class="lorapm-with-padding" *ngIf="currentProject">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title i18n>
+        Other projects
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>map</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-selection-list [multiple]="false">
+      <div *ngFor="let otherProject of otherProjects;">
+        <mat-list-option (click)="openDialog(otherProject)" >
+          {{otherProject.projectName}}
+        </mat-list-option>
+    </div>
+    </mat-selection-list>
+  </mat-expansion-panel>
+</div>
+
+<div class="lorapm-with-padding" *ngIf="!currentProject">
+  <mat-card>
+    <mat-card-actions>
+      <a routerLink="projects/project-form">
+        <button mat-raised-button color="primary" type="button" class="btn" i18n>
+          Start with your first project</button>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div class="lorapm-with-padding" *ngIf="currentProject">
+  <mat-card>
+    <mat-card-actions>
+      <a routerLink="projects/project-form">
+        <button mat-button type="button" class="btn" i18n>NEW PROJECT</button>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>

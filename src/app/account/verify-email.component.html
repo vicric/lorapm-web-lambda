@@ -1,0 +1,15 @@
+<div class="register-box">
+  <div class="card">
+
+    <h3 class="card-header" i18n>Verify Email</h3>
+    <div class="card-body">
+      <div *ngIf="emailStatus == EmailStatus.Verifying" i18n>
+        Verifying...
+      </div>
+      <div *ngIf="emailStatus == EmailStatus.Failed" i18n>
+        Verification failed, you can also verify your account using the <a routerLink="forgot-password">forgot password</a> page.
+      </div>
+    </div>
+
+  </div>
+</div>

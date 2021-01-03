@@ -1,0 +1,236 @@
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="index3.html" class="nav-link" i18n>Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link" i18n>Contact</a>
+      </li>
+    </ul>
+
+    <!-- SEARCH FORM -->
+    <!-- <form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form> -->
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto" *ngIf="account">
+      <li class="nav-item d-none d-sm-inline-block" *ngIf="currentProject">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true">{{currentProject.projectName}}</a>
+      </li>
+      <div class="nav-item" *ngIf="currentProject" [ngSwitch]="currentProject.projectPhase">
+        <li *ngSwitchCase="'Initiating'" class="nav-item" #tooltip="matTooltip" matTooltip="Initiating">
+          <a class="nav-link" (click)="openProjectPhaseDialog()" >
+            <i class="fas fa-power-off"></i>
+          </a>
+        </li>
+        <li *ngSwitchCase="'InitiatingAuthorized'" class="nav-item" #tooltip="matTooltip" matTooltip="Authorized">
+          <a class="nav-link" (click)="openProjectPhaseDialog()">
+            <i class="fas fa-thumbs-up"></i>
+          </a>
+        </li>
+        <li *ngSwitchCase="'Planning'" class="nav-item" #tooltip="matTooltip" matTooltip="Planning">
+          <a class="nav-link" (click)="openProjectPhaseDialog()" >
+            <i class="fas fa-drafting-compass"></i>
+          </a>
+        </li>
+        <li *ngSwitchCase="'ExecutionMonitoringControlling'" class="nav-item" #tooltip="matTooltip" matTooltip="Execution, Monitoring & Controlling">
+          <a class="nav-link" (click)="openProjectPhaseDialog()" >
+            <i class="fas fa-play"></i>
+          </a>
+        </li>
+        <li *ngSwitchCase="'Closed'" class="nav-item" #tooltip="matTooltip" matTooltip="Closed">
+          <a class="nav-link" (click)="openProjectPhaseDialog()" >
+            <i class="fas fa-check-circle"></i>
+          </a>
+        </li>
+        <li *ngSwitchCase="'Aborted'" class="nav-item" #tooltip="matTooltip" matTooltip="Aborted">
+          <a class="nav-link" (click)="openProjectPhaseDialog()" >
+            <i class="fas fa-exclamation-circle"></i>
+          </a>
+        </li>
+        <li *ngSwitchDefault class="nav-item">
+          <a class="nav-link" (click)="openProjectPhaseDialog()" >
+            <i class="fas fa-th-large"></i>
+          </a>
+        </li>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="assets/pmp.png" alt="AdminLTE Logo" class="brand-image"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">LORA PM</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex" *ngIf="account">
+        <div class="image">
+          <img src="assets/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">{{ account.firstName}} {{account.lastName }}</a>
+        </div>
+        <div class="info">
+          <a (click)="logout()" class="d-block">Logout</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="dashboard" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p i18n="dashboard|dashboard menu item">
+                Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="tasks" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p i18n="tasks|tasks menu item">
+                Tasks
+              </p>
+            </a>
+          </li>
+          <li class="nav-header" *ngIf="account" i18n>EXPENSES</li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="expenses-loranodes" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n="lora nodes|lora nodes menu item">LORA Nodes</p>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="dashboard" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n="installation material|installation material menu item">Installation Material</p>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="dashboard" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n>Transport</p>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="dashboard" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n>Contingency</p>
+            </a>
+          </li>
+          <li class="nav-header" *ngIf="account" i18n>TOOLS</li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="dashboard" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n>Earned Value Method</p>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="dashboard" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n>Critical Path Method</p>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="dashboard" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n>Change Order Manager</p>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="dashboard" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
+              <p i18n>Documentation</p>
+            </a>
+          </li>
+
+          <li class="nav-header" *ngIf="account" i18n>CONFIGURATION</li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="configuration-people" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n>People</p>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="configuration-categories" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n>Categories</p>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="configuration-catalogue" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n>Catalogue</p>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="dashboard" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n>Distributors</p>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="account">
+            <a routerLink="dashboard" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p i18n>Transport</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <router-outlet></router-outlet>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2020 <a href="http://knxpm.com">Sudoku Innovation</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 1.0.0
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark" *ngIf="account">
+    <!-- Control sidebar content goes here -->
+    <app-projects></app-projects>
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+

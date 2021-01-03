@@ -1,0 +1,54 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark" i18n>Categories</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#" i18n>Configuration</a></li>
+            <li class="breadcrumb-item active" i18n>Categories</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="card card-solid">
+      <form class="lorapm-form" [formGroup]="myForm" (ngSubmit)="submitHandler()">
+        <!-- Value: {{ myForm.value | json }} -->
+        <h1 *ngIf="isAddMode" i18n>New category</h1>
+        <h1 *ngIf="!isAddMode" i18n>Edit category</h1>
+
+        <hr>
+
+        <mat-form-field class="lorapm-full-width">
+          <input matInput placeholder="name" formControlName="name"/>
+          <mat-error *ngIf="name.invalid && name.touched" i18n>
+            Category name is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="lorapm-full-width">
+          <input matInput placeholder="color" formControlName="color"/>
+          <mat-error *ngIf="color.invalid && color.touched"> i18n
+            Color is required
+          </mat-error>
+        </mat-form-field>
+
+        <hr>
+
+        <button mat-raised-button [disabled]="myForm.invalid" color="primary" type="submit" i18n>Save</button>
+
+      </form>
+    </div>
+  </section>
+</div>
+
+
+
