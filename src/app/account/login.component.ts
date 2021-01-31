@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../_services';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +31,7 @@ export class LoginComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.form.controls; }
 
-  onSubmit() {
+  async onSubmit() {
     this.submitted = true;
 
     // reset alerts on submit
@@ -45,19 +44,20 @@ export class LoginComponent implements OnInit {
 
     this.loading = true;
 
-    this.accountService.login(this.f.email.value, this.f.password.value)
-        .pipe(first())
-        .subscribe({
-            next: () => {
-                // get return url from query parameters or default to home page
-                const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-                this.router.navigateByUrl(returnUrl);
-            },
-            error: error => {
-                this._snackBar.open(error);
-                this.loading = false;
-            }
-        });
-}
+    var test = this.accountService
+      .login(this.f.email.value, this.f.password.value)
+      .then(() => {
+        console.log('User authenticated');
+        // get return url from query parameters or default to home page
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.router.navigateByUrl(returnUrl);
+      })
+      .catch((error) => {
+        console.log('error:');
+        console.log( {error} );
+        this._snackBar.open(error.message);
+        this.loading = false;
+      });
+  }
 
 }

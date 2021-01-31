@@ -24,6 +24,17 @@ import { appInitializer, JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AccountService } from './_services';
 import { ProjectService } from './_services';
 
+import Amplify, { Auth } from 'aws-amplify';
+Amplify.configure({
+  Auth:{
+    mandatorySignIn:true,
+    region: 'eu-west-1',
+    userPoolId: 'eu-west-1_iPF8Lf1hf',
+    userPoolWebClientId: '38olm49p5u9pl7n6eelh5sk3vs',
+    authenticationFlowType:'USER_PASSWORD_AUTH'
+  }
+});
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,9 +57,9 @@ import { ProjectService } from './_services';
     AppMaterialModule,
   ],
   providers: [
-    { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    // { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
   ],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from '../_services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { first, finalize } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -16,6 +16,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private router: Router,
     private accountService: AccountService,
     private _snackBar: MatSnackBar
@@ -44,13 +45,22 @@ export class ForgotPasswordComponent implements OnInit {
     this.loading = true;
     this._snackBar.dismiss();
 
-    this.accountService.forgotPassword(this.f.email.value)
-        .pipe(first())
-        .pipe(finalize(() => this.loading = false))
-        .subscribe({
-            next: () => this._snackBar.open('Please check your email for password reset instructions', 'End now'),
-            error: error => this._snackBar.open(error)
-        });
+    this.accountService
+      .forgotPassword(this.f.email.value)
+      .then(() => {
+        this._snackBar.open('Please check your email for password reset instructions', 'End now');
+        this.router.navigate(['../verify-email'], { relativeTo: this.route });
+      })
+      .catch((error) => this._snackBar.open(error.message))
+      .finally(() => (this.loading = false));
+
+    // this.accountService.forgotPassword(this.f.email.value)
+    //     .pipe(first())
+    //     .pipe(finalize(() => this.loading = false))
+    //     .subscribe({
+    //         next: () => this._snackBar.open('Please check your email for password reset instructions', 'End now'),
+    //         error: error => this._snackBar.open(error)
+    //     });
 }
 
 }

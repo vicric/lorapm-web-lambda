@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-lorapmweblambda-dev-190957-authRole",
+      "UnauthRoleArn": "arn:aws:iam::661263397084:role/amplify-lorapmweblambda-dev-190957-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::661263397084:role/amplify-lorapmweblambda-dev-190957-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-lorapmweblambda-dev-190957-deployment",
+      "UnauthRoleName": "amplify-lorapmweblambda-dev-190957-unauthRole",
+      "StackName": "amplify-lorapmweblambda-dev-190957",
+      "StackId": "arn:aws:cloudformation:eu-west-1:661263397084:stack/amplify-lorapmweblambda-dev-190957/64e86130-6326-11eb-8142-0ae349a3bf03",
+      "AmplifyAppId": "dix6v86dfd6lo"
+    },
+    "categories": {
+      "auth": {
+        "lorapmweblambda": {}
+      }
+    }
+  }
+}

@@ -69,7 +69,6 @@ export class ProjectService {
   }
 
   setProjectPhase(id: number, cat: object) : any{
-    alert(JSON.stringify(cat));
     return this.http.put<IProject>(`${baseUrl}/${id}`, cat).pipe(
       catchError(this.handleError)
     );

@@ -6,7 +6,6 @@ import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
 import { VerifyEmailComponent } from './verify-email.component';
 import { ForgotPasswordComponent } from './forgot-password.component';
-import { ResetPasswordComponent } from './reset-password.component';
 
 const routes: Routes = [
     {
@@ -15,8 +14,7 @@ const routes: Routes = [
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
             { path: 'verify-email', component: VerifyEmailComponent },
-            { path: 'forgot-password', component: ForgotPasswordComponent },
-            { path: 'reset-password', component: ResetPasswordComponent }
+            { path: 'forgot-password', component: ForgotPasswordComponent }
         ]
     }
 ];
