@@ -1,10 +1,7 @@
+import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../_services';
 
-export function appInitializer(accountService: AccountService) {
-    // return () => new Promise(resolve => {
-    //     // attempt to refresh token on app start up to auto authenticate
-    //     accountService.refreshToken()
-    //         .subscribe()
-    //         .add(resolve);
-    // });
+export function appInitializer(
+  accountService: AccountService) {
+    return () => accountService.refreshToken();
 }

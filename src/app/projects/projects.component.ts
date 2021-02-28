@@ -25,16 +25,16 @@ export class ProjectsComponent implements OnInit {
   otherProjects: IProject[];
 
   ngOnInit(): void {
-    // this.refreshCurrentProject();
-    // this.refreshOtherProjects();
+    this.refreshCurrentProject();
+    this.refreshOtherProjects();
 
-    // this.projectService.projectCreated.subscribe(e => {
-    //   this.refreshCurrentProject();
-    //   this.refreshOtherProjects();
-    // });
-    // this.projectService.projectDeleted.subscribe(e => {
-    //   window.location.reload();
-    // });
+    this.projectService.projectCreated.subscribe(e => {
+      this.refreshCurrentProject();
+      this.refreshOtherProjects();
+    });
+    this.projectService.projectDeleted.subscribe(e => {
+      window.location.reload();
+    });
   }
 
   openDialog(project: Project) : void {

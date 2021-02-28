@@ -32,33 +32,33 @@
       <li class="nav-item d-none d-sm-inline-block" *ngIf="currentProject">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true">{{currentProject.projectName}}</a>
       </li>
-      <div class="nav-item" *ngIf="currentProject" [ngSwitch]="currentProject.projectPhase">
-        <li *ngSwitchCase="'Initiating'" class="nav-item" #tooltip="matTooltip" matTooltip="Initiating">
+      <div class="nav-item" *ngIf="currentProject" [ngSwitch]="currentProject.activeProjectPhase">
+        <li *ngSwitchCase="0" class="nav-item" #tooltip="matTooltip" matTooltip="Initiating">
           <a class="nav-link" (click)="openProjectPhaseDialog()" >
             <i class="fas fa-power-off"></i>
           </a>
         </li>
-        <li *ngSwitchCase="'InitiatingAuthorized'" class="nav-item" #tooltip="matTooltip" matTooltip="Authorized">
+        <li *ngSwitchCase="1" class="nav-item" #tooltip="matTooltip" matTooltip="Authorized">
           <a class="nav-link" (click)="openProjectPhaseDialog()">
             <i class="fas fa-thumbs-up"></i>
           </a>
         </li>
-        <li *ngSwitchCase="'Planning'" class="nav-item" #tooltip="matTooltip" matTooltip="Planning">
+        <li *ngSwitchCase="2" class="nav-item" #tooltip="matTooltip" matTooltip="Planning">
           <a class="nav-link" (click)="openProjectPhaseDialog()" >
             <i class="fas fa-drafting-compass"></i>
           </a>
         </li>
-        <li *ngSwitchCase="'ExecutionMonitoringControlling'" class="nav-item" #tooltip="matTooltip" matTooltip="Execution, Monitoring & Controlling">
+        <li *ngSwitchCase="3" class="nav-item" #tooltip="matTooltip" matTooltip="Execution, Monitoring & Controlling">
           <a class="nav-link" (click)="openProjectPhaseDialog()" >
             <i class="fas fa-play"></i>
           </a>
         </li>
-        <li *ngSwitchCase="'Closed'" class="nav-item" #tooltip="matTooltip" matTooltip="Closed">
+        <li *ngSwitchCase="4" class="nav-item" #tooltip="matTooltip" matTooltip="Closed">
           <a class="nav-link" (click)="openProjectPhaseDialog()" >
             <i class="fas fa-check-circle"></i>
           </a>
         </li>
-        <li *ngSwitchCase="'Aborted'" class="nav-item" #tooltip="matTooltip" matTooltip="Aborted">
+        <li *ngSwitchCase="5" class="nav-item" #tooltip="matTooltip" matTooltip="Aborted">
           <a class="nav-link" (click)="openProjectPhaseDialog()" >
             <i class="fas fa-exclamation-circle"></i>
           </a>

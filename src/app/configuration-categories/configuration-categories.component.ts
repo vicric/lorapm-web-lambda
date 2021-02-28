@@ -25,13 +25,16 @@ export class ConfigurationCategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.refreshCategories();
+    //TODO: Delete from here. just for testing:
+    var account = this.accountService.accountValue;
+    console.log({account});
   }
 
   deleteCategory(event, item) {
 
     try {
       var category = item as Category;
-      this.categoryService.delete(category.id).subscribe(
+      this.categoryService.delete(category.categoryId).subscribe(
         data => {
           this.refreshCategories();
           this._snackBar.open(category.name + ' deleted', 'End now');

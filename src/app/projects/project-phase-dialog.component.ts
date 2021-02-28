@@ -20,11 +20,12 @@ export class ProjectPhaseDialogComponent {
     this.dialogRef.close();
   }
 
-  goToPhase(phase : string): void {
+  goToPhase(phase : number): void {
     this.dialogRef.close();
 
     let model = {
-      projectPhase: phase
+      id: this.data.id,
+      activeProjectPhase: phase
     }
 
     this._projectService.setProjectPhase(this.data.id, model).subscribe(

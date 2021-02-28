@@ -1,6 +1,6 @@
 {
-    "resourceNameTruncated": "lorapm1b7cda09",
-    "userPoolName": "lorapmweblambda-pool",
+    "resourceNameTruncated": "lorapmd334eca4",
+    "userPoolName": "lorapm-userpool",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -10,7 +10,7 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
     "emailVerificationMessage": "Your verification code is {####}",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
@@ -21,7 +21,7 @@
         "given_name"
     ],
     "userpoolClientGenerateSecret": true,
-    "userpoolClientRefreshTokenValidity": "1",
+    "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
         "name",
         "email",
@@ -33,7 +33,6 @@
         "birthdate",
         "email",
         "family_name",
-        "middle_name",
         "gender",
         "given_name",
         "name",
@@ -47,9 +46,9 @@
         "email_verified",
         "phone_number_verified"
     ],
-    "userpoolClientLambdaRole": "lorapm1b7cda09_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "lorapmd334eca4_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
-    "sharedId": "1b7cda09",
+    "sharedId": "d334eca4",
     "resourceName": "lorapmweblambda",
     "authSelections": "userPoolOnly",
     "authRoleArn": {

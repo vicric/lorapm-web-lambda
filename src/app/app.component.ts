@@ -36,7 +36,9 @@ export class AppComponent {
   }
 
   setProject(project:Project){
-    this.currentProject = project
+    this.currentProject = project;
+    console.log({project});
+    alert("Version 28.02")
   }
 
   openProjectPhaseDialog() : void {

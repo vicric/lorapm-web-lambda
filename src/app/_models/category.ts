@@ -1,5 +1,5 @@
 export interface ICategory{
-  id?: number | null;
+  categoryId?: number | null;
   name: string;
   color: string;
 }
@@ -11,7 +11,7 @@ export interface ICategory{
 // }
 
 export class Category implements ICategory {
-  id?: number | null;
+  categoryId?: number | null;
   name: string;
   color: string;
 }

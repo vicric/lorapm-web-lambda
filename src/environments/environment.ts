@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://18.191.141.189:4000'
-  // apiUrl: 'http://localhost:4000'
+  apiUrl: 'https://akkk9tp2u6.execute-api.eu-west-3.amazonaws.com/Prod'
+  // apiUrl: 'https://localhost:5001'
 };
 
 /*

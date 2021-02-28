@@ -38,7 +38,7 @@
     "@ng-toolkit/universal": "^1.1.21",
     "admin-lte": "^3.0.5",
     "aws": "0.0.3-2",
-    "aws-amplify": "^3.3.15",
+    "aws-amplify": "^3.3.20",
     "aws-cli": "0.0.2",
     "guid-typescript": "^1.0.9",
     "moment": "^2.29.1",

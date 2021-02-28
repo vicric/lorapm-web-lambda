@@ -69,13 +69,14 @@ export class ProjectService {
   }
 
   setProjectPhase(id: number, cat: object) : any{
-    return this.http.put<IProject>(`${baseUrl}/${id}`, cat).pipe(
+    return this.http.put<IProject>(`${baseUrl}/${id}/setprojectphase`, cat).pipe(
       catchError(this.handleError)
     );
   }
 
   deleteProject(id: number) : Observable<any>{
-    return this.http.delete<IProject>(`${baseUrl}/${id}`).pipe(
+    alert(id)
+    return this.http.delete<any>(`${baseUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }

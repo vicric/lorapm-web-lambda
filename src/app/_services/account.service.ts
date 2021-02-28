@@ -2,14 +2,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, finalize } from 'rxjs/operators';
-
-import { environment } from 'src/environments/environment';
 
 import { Account } from "../_models"
 import { Auth } from 'aws-amplify';
-
-// const baseUrl = `${environment.apiUrl}/accounts`;
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -27,9 +22,16 @@ export class AccountService {
 
   login(email: string, password: string) {
     console.log('login');
-    return Auth.signIn(email, password).then((account) => {
-      console.log('account:');
-      console.log({ account });
+    return Auth.signIn(email, password).then((cognitoUser) => {
+      console.log({ cognitoUser });
+
+      const account = new Account();
+      account.userName = cognitoUser.username,
+      account.firstName = cognitoUser.attributes.given_name;
+      account.lastName = cognitoUser.attributes.family_name;
+      account.email = cognitoUser.attributes.email;
+      account.jwtToken = cognitoUser.signInUserSession.idToken.jwtToken;
+
       this.accountSubject.next(account);
       return account;
     });
@@ -45,13 +47,26 @@ export class AccountService {
   }
 
   refreshToken() {
-    alert('delete calls to refresh token');
-    // return this.http.post<any>(`${baseUrl}/refresh-token`, {}, { withCredentials: true })
-    //     .pipe(map((account) => {
-    //         this.accountSubject.next(account);
-    //         this.startRefreshTokenTimer();
-    //         return account;
-    //     }));
+    try {
+      return Auth.currentAuthenticatedUser().then((cognitoUser) => {
+        console.log({ cognitoUser });
+
+        const account = new Account();
+        account.userName = cognitoUser.username,
+        account.firstName = cognitoUser.attributes.given_name;
+        account.lastName = cognitoUser.attributes.family_name;
+        account.email = cognitoUser.attributes.email;
+        account.jwtToken = cognitoUser.signInUserSession.idToken.jwtToken;
+
+        this.accountSubject.next(account);
+        return account;
+      }).catch((error) => {
+        console.log({error});
+      });
+
+    } catch (e) {
+      console.log('Unable to refresh Token', e);
+    }
   }
 
   register(email:string, password:string, firstName:string, lastName:string) {

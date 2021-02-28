@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
     this.loading = true;
 
-    var test = this.accountService
+    this.accountService
       .login(this.f.email.value, this.f.password.value)
       .then(() => {
         console.log('User authenticated');

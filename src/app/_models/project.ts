@@ -5,7 +5,7 @@ export interface IProject{
   clientCompany: string;
   projectLeader: string;
   isCurrent: boolean;
-  projectPhase: ProjectPhase;
+  activeProjectPhase: ProjectPhase;
   contingencyLimit: number;
 }
 
@@ -16,7 +16,7 @@ export class Project implements IProject{
   clientCompany: string;
   projectLeader: string;
   isCurrent: boolean;
-  projectPhase: ProjectPhase;
+  activeProjectPhase: ProjectPhase;
   contingencyLimit: number;
 }
 
@@ -28,10 +28,10 @@ export class Project implements IProject{
 
 export enum ProjectPhase
 {
-  Initiating = 'Initiating',
-  InitiatingAuthorized = 'InitiatingAuthorized',
-  Planning = 'Planning',
-  ExecutionMonitoringControlling = 'ExecutionMonitoringControlling',
-  Closed = 'Closed',
-  Aborted = 'Aborted'
+  Initiating = 0,
+  InitiatingAuthorized = 1,
+  Planning = 2,
+  ExecutionMonitoringControlling = 3,
+  Closed = 4,
+  Aborted = 5
 }
